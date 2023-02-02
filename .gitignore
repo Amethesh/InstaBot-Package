@@ -1,0 +1,19 @@
+node_modules
+.env
+
+#JPEG
+*.jpg
+*.jpeg
+*.jpe
+
+# RAW
+*.raw
+
+# Web P
+*.webp
+
+# Portable Document Format
+*.pdf
+
+#PNG
+*.png

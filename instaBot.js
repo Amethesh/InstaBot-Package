@@ -9,7 +9,7 @@ puppeteer.use(stealthPlugin())
 const instaBot = async () => {
     const browser = await puppeteer.launch({ 
         executablePath: process.env.CHROME_PATH,
-        headless: true
+        headless: false
     })
     const page = await browser.newPage()
     await page.goto('https://www.instagram.com/')
@@ -45,9 +45,7 @@ const instaBot = async () => {
     console.log('got file chooser')
     
     await fileChooser.accept([
-        './Pikachu_masterpiece_best_quality_high_quality_masterpiece_best__6abfedc9-63aa-40c2-884d-6f877fd97b2f.png',
-        './Pikachu_masterpiece_best_quality_high_quality_masterpiece_best__bbd5cd11-e26a-4297-8788-6a5b0a4abff1.png',
-        './Pikachu_masterpiece_best_quality_high_quality_masterpiece_best__ccd81e7a-e72f-4092-92bb-d02d10db71c4.png'
+        ''
     ])
     console.log('Files accepted')
 

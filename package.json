@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Prasanth-BS/Instagram-bot#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "image-downloader": "^4.3.0",
     "puppeteer": "^19.5.2",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1"

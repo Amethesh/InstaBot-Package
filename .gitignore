@@ -1,4 +1,7 @@
 node_modules
+chrome
+images
+screenshot
 .env
 
 #JPEG

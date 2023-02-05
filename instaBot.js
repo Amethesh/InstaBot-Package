@@ -1,10 +1,12 @@
 import puppeteer from 'puppeteer-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
-
+import images from "./images.json" assert { type: "json" };
 import * as dotenv from 'dotenv'
 dotenv.config()
 
 puppeteer.use(stealthPlugin())
+
+let imagepath = []
 
 const instaBot = async () => {
     const browser = await puppeteer.launch({ 
@@ -44,9 +46,9 @@ const instaBot = async () => {
     ]) 
     console.log('got file chooser')
     
-    await fileChooser.accept([
-        ''
-    ])
+    imageConverter(1) //calling function to store the paths of images
+
+    await fileChooser.accept(imagepath)
     console.log('Files accepted')
 
     await page.waitForSelector('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
@@ -59,7 +61,7 @@ const instaBot = async () => {
     await page.waitForSelector('[aria-label="Write a caption..."]')
     console.log('Found and waited for caption dom')
     //await page.screenshot({ path: 'caption_prob' })
-    await page.type('[aria-label="Write a caption..."]', 'Posted using bot: TEST-2')
+    await page.type('[aria-label="Write a caption..."]', 'Posted using bot: Testing filepath function 1')
     await page.screenshot({ path: `caption.png`, fullPage: true })
     
     await page.waitForTimeout(1000)
@@ -69,4 +71,20 @@ const instaBot = async () => {
     console.log("posted 👍")
 }
 
+let jsonlength = Object.keys(images).length;
+
+function imageConverter(postno) {
+    
+      for (let j = 0; j < Object.values(images)[postno-1].length && j <= 4; j++) {
+        imagepath[j] = `E:/Website Design/InstagramBOT/New-InstaBOT/images/post${postno}/image${j}.jpg`
+        console.log(Object.values(images)[postno-1].length);
+      }
+    
+}
+
 instaBot()
+//imageConverter(1) //calling function to store the paths of images
+
+
+
+console.log(imagepath);

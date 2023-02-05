@@ -1,18 +1,27 @@
-import download from "image-downloader";//npm package for converting images urls to disk saved images
-import images from "./images.json" assert { type: "json" }; //importing json gives warning since its a new feature in js
+import download from "image-downloader"; //npm package for converting images urls to disk saved images
+
+import images from "./images.json" assert { type: "json" };
+//importing json gives warning since its a new feature in js
+
+//const images = require('./file.json');
+
 import fs from 'fs';
+
+
+
+console.log(images);
 
 let jsonlength = Object.keys(images).length;
 //let postlength = images.array.length
 
 function imageConverter() {
   for (let i = 1; i <= jsonlength; i++) {
-    for (let j = 0; j <= Object.values(images)[i-1].length; j++) {
+    for (let j = 0; j <= Object.values(images)[i-1].length && j <= 4; j++) {
 
       const options = {
         url: images[i][j],
         dest: `E:/Website Design/InstagramBOT/New-InstaBOT/images/post${i}/image${j}.jpg`,
-        //Replace this path and make sure u create 5 folders named post1-post2
+        // TODO Replace this path and make sure u create 5 folders named post1-post2
       };
 
       download.image(options)
@@ -29,7 +38,8 @@ function imageclear() {
     for (let j = 0; j <= Object.values(images)[i-1].length; j++) {
       
       fs.stat(`E:/Website Design/InstagramBOT/New-InstaBOT/images/post${i}/image${j}.jpg` , function (err, stats) {
-        //console.log(stats); //here we got all information of file in stats variable
+        //console.log(stats); 
+        //here we got all information of file in stats variable
      
         if (err) {
             return console.error(err);
@@ -45,6 +55,6 @@ function imageclear() {
   }
 }
 
-//imageConverter()
-imageclear()
+imageConverter()
+//imageclear()
 //console.log(test);

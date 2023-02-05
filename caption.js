@@ -1,4 +1,6 @@
+// TODO To import tags from artstaion and process it through .toLowerCase 
 
+//! Use template literal `` to create a multiline stings
 let tags = [
    "#Digital 2D",
    "#Digital 3D",
@@ -14,7 +16,7 @@ let tags = [
    "#illustration",
    "#characterposter",
    "#characterart",
-    ];
+]; //Realtime example
 
 let caption = "";
 function captionSelector(tags) {
@@ -40,10 +42,9 @@ function captionSelector(tags) {
              caption = "The string is related to fantasy.";
         }
 
-        else if (tag === "#Game Art" || tag === "#game art") {
-            
+        else if (tag === "#Game Art" || tag === "#game art") {            
             caption = "The string is related to game.";
-            //console.log(caption)
+            
         }
 
         else if (tag === "#Sketches" || tag === "#Portraits") {
@@ -55,7 +56,10 @@ function captionSelector(tags) {
         }
         
         else if (tag === "#Hard Surface") {
-             caption = "The string is related to hard.";
+             caption = `The string is related to hard.
+             
+             
+             `;
         }
         
         else if (tag === "#Science Fiction") {
@@ -68,3 +72,4 @@ function captionSelector(tags) {
 captionSelector(tags);
 
 console.log(caption);
+// TODO Export the function or the final caption itself

@@ -19,24 +19,82 @@ let tags = [
    "#characterart",
 ]; //Realtime example
 
+let ArtHead = ""; // TODO Add the parameter we get from the artstation bot
+let Artist = ""; // TODO Add the parameter we get from the artstation bot
+
 let caption = "";
 function captionSelector(tags) {
 
     tags.forEach(function(tag) {
         if (tag === "#Character Modeling" || tag === "#Character Design") {
-             caption = "The tag is related to character art.";
+             caption = `${ArtHead}
+             Great character by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #characterdesign #artstation #artstationHQ #fanart
+             #digitalpainting #charactermodeling #3dart #lightingart
+             #artdaily
+             `;
         } 
 
         else if (tag === "#Anime & Manga") {
-             caption = "The string is related to anime.";
+             caption = `${ArtHead}
+             Great anime style art by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #characterdesign #artstation #artstationHQ #fanart
+             #jpanart #animeedit #charactermodeling #anime #manga 
+             #aot #animeboy #animeart #animegirl #cosplay
+             `;
         }
 
         else if (tag === "#blender") {
-             caption = "The tag is related to blender.";
+             caption = `${ArtHead}
+             Created in blender by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #blender #blender3d #blendercommunity #artstation #artstationHQ
+             #blendercycles #blenderguru #b3d #blenderart #3drender #3dartists
+             `;
         } 
 
-        else if (tag === "#Concept Art" || tag === "#concept art") {
-             caption = "The string is related to concept art.";
+        else if (tag === "#Concept Art" || tag === "#concept art") { //make sure change the statement once .toLower is implemented
+             caption = `${ArtHead}
+             Great concept art by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #conceptart #artstation #artstationHQ
+             #digitalpainting #charactermodeling #conceptartist #digitalart
+             #colorstudy #illustration #
+             `;
         }
 
         else if (tag === "#Fantasy") {

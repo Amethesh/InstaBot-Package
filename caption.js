@@ -40,7 +40,7 @@ function captionSelector(tags) {
              .
              #characterdesign #artstation #artstationHQ #fanart
              #digitalpainting #charactermodeling #3dart #lightingart
-             #artdaily
+             #artdaily #aiart
              `;
         } 
 
@@ -93,36 +93,111 @@ function captionSelector(tags) {
              .
              #conceptart #artstation #artstationHQ
              #digitalpainting #charactermodeling #conceptartist #digitalart
-             #colorstudy #illustration #
+             #colorstudy #illustration #illustrationartist #noai
              `;
         }
 
         else if (tag === "#Fantasy") {
-             caption = "The string is related to fantasy.";
+             caption = `${ArtHead}
+             Great character by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #artstation #artstationHQ #digitalpainting
+             #artdaily
+             `;
         }
 
         else if (tag === "#Game Art" || tag === "#game art") {            
-            caption = "The string is related to game.";
+            caption = `${ArtHead}
+            Great character by ${Artist}
+            Follow us @cg.nation_
+            .
+            .
+            .
+            .
+            .
+            .
+            .
+            .
+            #artstation #artstationHQ #digitalpainting
+            #artdaily
+            `;
             
         }
 
         else if (tag === "#Sketches" || tag === "#Portraits") {
-             caption = "The string is related to por.";
+             caption = `${ArtHead}
+             Great character by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #artstation #artstationHQ #digitalpainting
+             #artdaily
+             `;
         }
 
         else if (tag === "#Vehicles") {
-             caption = "The string is related to veh.";
+             caption = `${ArtHead}
+             Great character by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #artstation #artstationHQ #digitalpainting
+             #artdaily
+             `;
         }
         
         else if (tag === "#Hard Surface") {
-             caption = `The string is related to hard.
-             
-             
+             caption = `${ArtHead}
+             Great character by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #artstation #artstationHQ #digitalpainting
+             #artdaily
              `;
         }
         
         else if (tag === "#Science Fiction") {
-             caption = "The string is related to science.";
+             caption = `${ArtHead}
+             Great character by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #artstation #artstationHQ #digitalpainting
+             #artdaily
+             `;
         }
 
     });

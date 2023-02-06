@@ -4,7 +4,7 @@
 // TODO test it in instagram to see wheather the tab spaces is considered or not
 //! Use template literal `` to create a multiline stings
 let tags = [
-   "#Digital 2D",
+   "#Vehicles",
    "#Digital 3D",
    "#Mixed Media",
    "#Fan Art",
@@ -115,8 +115,10 @@ Follow us @cg.nation_
 .
 .
 .
-#artstation #artstationHQ #digitalpainting
-#artdaily
+#fantasyart #fantasyartist #fantasyillustration 
+#fantasypainting #fantasydrawing #digitalfantasy
+#fantasyworld #magicart #mythicalcreatures
+#fantasylandscape #fantasydesign #fantasyportrait
              `;
         }
 

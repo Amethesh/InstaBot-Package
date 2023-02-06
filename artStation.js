@@ -28,10 +28,17 @@ async function getData(noOfElements) {
         
         console.log(`Went through ${i} element `);
         await page.waitForSelector('picture.d-block')
+
         const imageLinks = await page.evaluate(() => {
             const assets = Array.from(document.querySelectorAll('picture.d-block:nth-child(-n+5)'))
             return assets.map(asset => asset.querySelector('img').getAttribute('src'))
-            // return assets.map(asset => asset.getAttribute('src'))
+            //? return assets.map(asset => asset.getAttribute('src')) 
+        })
+        
+        const imageDetails = await page.evaluate(() => {
+            const assets = document.querySelector('h1.h3 ng-star-inserted')
+            return assets.map(asset => asset.querySelector('img').getAttribute('src'))
+             
         })
         console.log("collected images");
  
@@ -39,7 +46,7 @@ async function getData(noOfElements) {
         artistImage[`${i}`] = imageLinks;
 
         page.goBack()
-        await page.screenshot({ path: `./screenshot/ex${i}.png`, fullPage: true })
+        //await page.screenshot({ path: `./screenshot/ex${i}.png`, fullPage: true })
     }
     
     // console.log(artistImage);

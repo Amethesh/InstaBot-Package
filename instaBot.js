@@ -80,11 +80,11 @@ const instaBot = async () => {
     await fileChooser.accept(imagepath)
     console.log('Files accepted')
 
-    //Clicking Original size
-    //await page.waitForSelector('button._acan._acao._acas._aj1-')
-    await page.waitForSelector('._acan._acao._acas._aj1-')
-    //await page.click('._acan._acao._acas._aj1-')
-    await page.click('._acan._acao._acas._aj1-')
+    //Clicking Re-size
+    await page.waitForSelector('button._acan._acao._acas._aj1-')    
+    await page.click('div._abfo button._acan._acao._acas._aj1-')
+    //Clicking the Dropdown and setting it to original
+    await page.click('div._ac36._ac38 button._acan._acao._acas._aj1-:nth-child(7)')
     console.log("Orignal size is set")
 
     //Clicking Next
@@ -104,11 +104,9 @@ const instaBot = async () => {
     await page.waitForTimeout(1000)
     await page.click('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
     await page.waitForSelector('img[alt="Animated checkmark"]')
-    //await browser.close()
+    await browser.close()
     console.log("posted 👍")
 }
-
-let jsonlength = Object.keys(images).length;
 
 function imageConverter(postno) {
     

@@ -1,15 +1,15 @@
 import puppeteer from 'puppeteer-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
-import { numberedJson } from './imageConverter.js';
 import cookies from "./cookies.json" assert { type: "json" };
 import { postSelector } from './caption.js';
+import imageLocator from './imageLocator.js';
 import fs from "fs";
 import * as dotenv from 'dotenv';
 dotenv.config()
 
 puppeteer.use(stealthPlugin())
 
-let imagepath = []
+//let imagepath = []
 
 const instaBot = async (postno) => {
     const browser = await puppeteer.launch({ 
@@ -76,7 +76,7 @@ const instaBot = async (postno) => {
     ]) 
     console.log('got file chooser')
     
-    imageConverter(postno) //calling function to store the paths of images
+    const imagepath = imageLocator(postno) //calling function to store the paths of images
 
     await fileChooser.accept(imagepath)
     console.log('Files accepted')
@@ -111,15 +111,5 @@ const instaBot = async (postno) => {
     console.log("posted 👍")
 }
 
-function imageConverter(postno) {
-    
-      for (let j = 0; j < Object.values(numberedJson)[postno-1].length && j <= 4; j++) {
-        imagepath[j] = `E:/Website Design/InstagramBOT/New-InstaBOT/images/post${postno}/image${j}.jpg`
-        console.log(Object.values(numberedJson)[postno-1].length);
-      }
-    
-}
-
 instaBot(5)
 //imageConverter(1) //calling function to store the paths of images
-console.log(imagepath);

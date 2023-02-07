@@ -3,7 +3,7 @@ import download from "image-downloader"; //npm package for converting images url
 import images from "./ArtData.json" assert { type: "json" };
 //importing json gives warning since its a new feature in js
 import fs from 'fs';
-console.log(images.imageLinks);
+//console.log(images.imageLinks);
 
 //!Converting json to a readable format
 const imageLinks = [];
@@ -19,11 +19,11 @@ for (let key in imageLinks) {
   count++;
 }
 
-console.log(numberedJson);
+//console.log(numberedJson);
 
 let jsonlength = Object.keys(numberedJson).length;
 //let postlength = images.array.length
-console.log(jsonlength)
+//console.log(jsonlength)
 
 function imageConverter() {
   for (let i = 1; i <= jsonlength; i++) {

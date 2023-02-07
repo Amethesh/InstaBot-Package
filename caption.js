@@ -1,33 +1,27 @@
-// !Use better comments extention in vscode
 // TODO To import tags from artstaion and process it through .toLowerCase
 // TODO test it in instagram to see wheather the tab spaces is considered or not
 //! Use template literal `` to create a multiline stings
-
-let tags = [
-  "#Vehicles",
-  "#Digital 3D",
-  "#Mixed Media",
-  "#Fan Art",
-  "#Character Design",
-  "#Character Modeling",
-  "#darthmaul",
-  "#starwars",
-  "#digitalart",
-  "#fanart",
-  "#conception",
-  "#illustration",
-  "#characterposter",
-  "#characterart",
-]; //Realtime example
-
-let ArtHead = ""; // TODO Add the parameter we get from the artstation bot
-let Artist = ""; // TODO Add the parameter we get from the artstation bot
+import ArtData from "./ArtData.json" assert { type: "json" };
 
 let caption = "";
-function captionSelector(tags) {
+export function postSelector(postno) {
+  
+  const ArtHead = ArtData[postno].title; // Post title
+  const Artist = ArtData[postno].artistName; // Artist name
+  const tags = ArtData[postno].tags.map(tag => {return tag})
+  console.log(`Title= ${ArtHead}`)
+  console.log(`Artist= ${Artist}`)
+  console.log(`Tags= ${tags}`)
+  captionSelector(tags,ArtHead,Artist)
+  console.log(caption)
+  return caption
+}
+
+
+function captionSelector(tags,ArtHead,Artist) {
   tags.forEach(function (tag) {
     if (tag === "#Character Modeling" || tag === "#Character Design") {
-      caption = `
+            caption = `
 ${ArtHead}
 Great character by ${Artist}
 Follow us @cg.nation_
@@ -44,7 +38,7 @@ Follow us @cg.nation_
 #artdaily #aiart
              `;
     } else if (tag === "#Anime & Manga") {
-      caption = `
+            caption = `
 ${ArtHead}
 Great anime style art by ${Artist}
 Follow us @cg.nation_
@@ -61,7 +55,7 @@ Follow us @cg.nation_
 #aot #animeboy #animeart #animegirl #cosplay
              `;
     } else if (tag === "#blender") {
-      caption = `
+            caption = `
 ${ArtHead}
 Created in blender by ${Artist}
 Follow us @cg.nation_
@@ -78,7 +72,7 @@ Follow us @cg.nation_
              `;
     } else if (tag === "#Concept Art" || tag === "#concept art") {
       //make sure change the statement once .toLower is implemented
-      caption = `
+            caption = `
 ${ArtHead}
 Great concept art by ${Artist}
 Follow us @cg.nation_
@@ -95,7 +89,7 @@ Follow us @cg.nation_
 #colorstudy #illustration #illustrationartist #noai
              `;
     } else if (tag === "#Fantasy") {
-      caption = `
+            caption = `
 ${ArtHead}
 Great character by ${Artist}
 Follow us @cg.nation_
@@ -113,7 +107,7 @@ Follow us @cg.nation_
 #fantasylandscape #fantasydesign #fantasyportrait
              `;
     } else if (tag === "#Game Art" || tag === "#game art") {
-      caption = `${ArtHead}
+            caption = `${ArtHead}
             Great character by ${Artist}
             Follow us @cg.nation_
             .
@@ -128,7 +122,7 @@ Follow us @cg.nation_
             #artdaily
             `;
     } else if (tag === "#Sketches" || tag === "#Portraits") {
-      caption = `${ArtHead}
+            caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -143,7 +137,7 @@ Follow us @cg.nation_
              #artdaily
              `;
     } else if (tag === "#Vehicles") {
-      caption = `${ArtHead}
+            caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -158,7 +152,7 @@ Follow us @cg.nation_
              #artdaily
              `;
     } else if (tag === "#Hard Surface") {
-      caption = `${ArtHead}
+            caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -173,7 +167,7 @@ Follow us @cg.nation_
              #artdaily
              `;
     } else if (tag === "#Science Fiction") {
-      caption = `${ArtHead}
+            caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -187,11 +181,24 @@ Follow us @cg.nation_
              #artstation #artstationHQ #digitalpainting
              #artdaily
              `;
+    } else{
+        caption = `Rate this artwork by ${Artist}
+             Follow us @cg.nation_
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             .
+             #artstation #artstationHQ #digitalpainting
+             #artdaily`
     }
   });
 }
 
-captionSelector(tags);
-
-console.log(caption);
+//captionSelector(tags);
+//postSelector(2)
+//console.log(caption);
 // TODO Export the function or the final caption itself

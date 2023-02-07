@@ -2,8 +2,6 @@ import download from "image-downloader"; //npm package for converting images url
 
 import images from "./ArtData.json" assert { type: "json" };
 //importing json gives warning since its a new feature in js
-
-//const images = require('./file.json');
 import fs from 'fs';
 console.log(images.imageLinks);
 
@@ -73,6 +71,6 @@ function imageclear() {
   }
 }
 
-export {imageConverter, imageclear}
-imageConverter()
+export {imageConverter, imageclear, numberedJson}
+//imageConverter()
 //imageclear()

@@ -36,7 +36,8 @@ async function getData(noOfElements) {
         })
         
         const imageDetails = await page.evaluate(() => {
-            const assets = document.querySelector('h1.h3 ng-star-inserted')
+            const title = document.querySelector('h1.h3 ng-star-inserted')
+            
             return assets.map(asset => asset.querySelector('img').getAttribute('src'))
              
         })

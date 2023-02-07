@@ -1,7 +1,9 @@
 import puppeteer from 'puppeteer-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 import images from "./images.json" assert { type: "json" };
-import * as dotenv from 'dotenv'
+import cookies from "./cookies.json" assert { type: "json" };
+import fs from "fs";
+import * as dotenv from 'dotenv';
 dotenv.config()
 
 puppeteer.use(stealthPlugin())
@@ -16,16 +18,43 @@ const instaBot = async () => {
     const page = await browser.newPage()
     await page.goto('https://www.instagram.com/')
 
-    await page.waitForSelector('input[name=username]');
+    await page.waitForTimeout(1000)
+    //await page.waitForSelector('input[name=username]');
+    
+    // await page.type('input[name=username]', process.env.INSTA_USERNAME)
+    // await page.type('input[name=password]', process.env.INSTA_PASSWORD)
 
-    await page.type('input[name=username]', process.env.INSTA_USERNAME)
-    await page.type('input[name=password]', process.env.INSTA_PASSWORD)
+    // await page.click('button[type=submit]')
 
-    await page.click('button[type=submit]')
+    //Load cookies
+    // let cookies
+    // fs.readFile("cookies.json", (err, data) => {
+    //     if(err) throw err;
 
+    //     cookies = JSON.parse(data);
+    // });
+    // let cookies
+    // fs.readFile("cookies.json", (err, data) => {
+    //     if(err) throw err;
+
+    //     cookies = JSON.parse(data);
+    // });
+    //const cookies = JSON.parse(cookiesString);
+    await page.setCookie(...cookies);
+
+    await page.reload({ waitUntil: 'networkidle0'})
+    
     //clicks needed to get to home page
-    await page.waitForSelector('._ac8f button[type=button]');
-    await page.click('._ac8f button[type=button]')
+   // await page.waitForSelector('._ac8f button[type=button]');
+    //await page.click('._ac8f button[type=button]')
+
+    //Saving cookies
+    // const cookies = await page.cookies();
+    // //console.log(cookies)
+    // fs.writeFile("cookies.json", JSON.stringify(cookies), (err) => {
+    //     if(err)
+    //     console.log('Unable to write');
+    // });
 
     await page.waitForSelector('._a9-z ._a9--._a9_1')
     await page.click('._a9-z ._a9--._a9_1')
@@ -51,6 +80,14 @@ const instaBot = async () => {
     await fileChooser.accept(imagepath)
     console.log('Files accepted')
 
+    //Clicking Original size
+    //await page.waitForSelector('button._acan._acao._acas._aj1-')
+    await page.waitForSelector('._acan._acao._acas._aj1-')
+    //await page.click('._acan._acao._acas._aj1-')
+    await page.click('._acan._acao._acas._aj1-')
+    console.log("Orignal size is set")
+
+    //Clicking Next
     await page.waitForSelector('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
     await page.click('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
 
@@ -67,7 +104,7 @@ const instaBot = async () => {
     await page.waitForTimeout(1000)
     await page.click('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
     await page.waitForSelector('img[alt="Animated checkmark"]')
-    await browser.close()
+    //await browser.close()
     console.log("posted 👍")
 }
 

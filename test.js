@@ -59,6 +59,7 @@
 // console.log(images)
 
 import getData from "./ArtstationModule.js";
+import { imageConverter,imageclear } from "./imageConverter.js";
 import fs from 'fs';
 
 getData(5)
@@ -74,3 +75,6 @@ getData(5)
   .catch(error => {
     console.error(error);
   });
+
+
+  

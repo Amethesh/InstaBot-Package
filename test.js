@@ -26,35 +26,51 @@
 
 //////////////////////////////////TEST-2///////////////////////////////////////////////////
 
- import fs from 'fs';
 // ? let images 
 // ? fs.readFile('./images.json', (err, data) => {
-// ?   if (err) throw err;
-
-// ?   images = JSON.parse(data);
-
-// ? });
-
-// ? console.log(images);
-
-// ! does'nt work due to fs.readFile being async function😒😒
-
-
-function readJSONFile(filePath, callback) {
-
-    fs.readFile(filePath, (err, data) => {
-      if (err) return callback(err);
+  // ?   if (err) throw err;
   
-      try {
-        let json = JSON.parse(data);
-        console.log(json)
-        return json
-      } catch (error) {
-        callback(error);
-      }
-    });
-}
+  // ?   images = JSON.parse(data);
+  
+  // ? });
+  
+  // ? console.log(images);
+  
+  // ! does'nt work due to fs.readFile being async function😒😒
+  
+  
+  // function readJSONFile(filePath, callback) {
+    
+    //     fs.readFile(filePath, (err, data) => {
+      //       if (err) return callback(err);
+      
+      //       try {
+        //         let json = JSON.parse(data);
+        //         console.log(json)
+        //         return json
+        //       } catch (error) {
+          //         callback(error);
+          //       }
+          //     });
+          // }
+          
+          // const images = readJSONFile('images.json');
+          
+// console.log(images)
 
-const images = readJSONFile('images.json');
+import getData from "./ArtstationModule.js";
+import fs from 'fs';
 
-console.log(images)
+getData(5)
+  .then(data => {
+    // Do something with the data here
+    console.log(data)
+    fs.writeFile('ArtData.json', JSON.stringify(data), (err) => {
+      if(err)
+      console.log('Unable to write');
+    })
+    
+  })
+  .catch(error => {
+    console.error(error);
+  });

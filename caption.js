@@ -1,23 +1,23 @@
 // !Use better comments extention in vscode
-
-// TODO To import tags from artstaion and process it through .toLowerCase 
+// TODO To import tags from artstaion and process it through .toLowerCase
 // TODO test it in instagram to see wheather the tab spaces is considered or not
 //! Use template literal `` to create a multiline stings
+
 let tags = [
-   "#Vehicles",
-   "#Digital 3D",
-   "#Mixed Media",
-   "#Fan Art",
-   "#Character Design",
-   "#Character Modeling",
-   "#darthmaul",
-   "#starwars",
-   "#digitalart",
-   "#fanart",
-   "#conception",
-   "#illustration",
-   "#characterposter",
-   "#characterart",
+  "#Vehicles",
+  "#Digital 3D",
+  "#Mixed Media",
+  "#Fan Art",
+  "#Character Design",
+  "#Character Modeling",
+  "#darthmaul",
+  "#starwars",
+  "#digitalart",
+  "#fanart",
+  "#conception",
+  "#illustration",
+  "#characterposter",
+  "#characterart",
 ]; //Realtime example
 
 let ArtHead = ""; // TODO Add the parameter we get from the artstation bot
@@ -25,10 +25,9 @@ let Artist = ""; // TODO Add the parameter we get from the artstation bot
 
 let caption = "";
 function captionSelector(tags) {
-
-    tags.forEach(function(tag) {
-        if (tag === "#Character Modeling" || tag === "#Character Design") {
-             caption = `
+  tags.forEach(function (tag) {
+    if (tag === "#Character Modeling" || tag === "#Character Design") {
+      caption = `
 ${ArtHead}
 Great character by ${Artist}
 Follow us @cg.nation_
@@ -44,10 +43,8 @@ Follow us @cg.nation_
 #digitalpainting #charactermodeling #3dart #lightingart
 #artdaily #aiart
              `;
-        } 
-
-        else if (tag === "#Anime & Manga") {
-             caption = `
+    } else if (tag === "#Anime & Manga") {
+      caption = `
 ${ArtHead}
 Great anime style art by ${Artist}
 Follow us @cg.nation_
@@ -63,10 +60,8 @@ Follow us @cg.nation_
 #jpanart #animeedit #charactermodeling #anime #manga 
 #aot #animeboy #animeart #animegirl #cosplay
              `;
-        }
-
-        else if (tag === "#blender") {
-             caption = `
+    } else if (tag === "#blender") {
+      caption = `
 ${ArtHead}
 Created in blender by ${Artist}
 Follow us @cg.nation_
@@ -81,10 +76,9 @@ Follow us @cg.nation_
 #blender #blender3d #blendercommunity #artstation #artstationHQ
 #blendercycles #blenderguru #b3d #blenderart #3drender #3dartists
              `;
-        } 
-
-        else if (tag === "#Concept Art" || tag === "#concept art") { //make sure change the statement once .toLower is implemented
-             caption = `
+    } else if (tag === "#Concept Art" || tag === "#concept art") {
+      //make sure change the statement once .toLower is implemented
+      caption = `
 ${ArtHead}
 Great concept art by ${Artist}
 Follow us @cg.nation_
@@ -100,10 +94,8 @@ Follow us @cg.nation_
 #digitalpainting #charactermodeling #conceptartist #digitalart
 #colorstudy #illustration #illustrationartist #noai
              `;
-        }
-
-        else if (tag === "#Fantasy") {
-             caption = `
+    } else if (tag === "#Fantasy") {
+      caption = `
 ${ArtHead}
 Great character by ${Artist}
 Follow us @cg.nation_
@@ -120,10 +112,8 @@ Follow us @cg.nation_
 #fantasyworld #magicart #mythicalcreatures
 #fantasylandscape #fantasydesign #fantasyportrait
              `;
-        }
-
-        else if (tag === "#Game Art" || tag === "#game art") {            
-            caption = `${ArtHead}
+    } else if (tag === "#Game Art" || tag === "#game art") {
+      caption = `${ArtHead}
             Great character by ${Artist}
             Follow us @cg.nation_
             .
@@ -137,11 +127,8 @@ Follow us @cg.nation_
             #artstation #artstationHQ #digitalpainting
             #artdaily
             `;
-            
-        }
-
-        else if (tag === "#Sketches" || tag === "#Portraits") {
-             caption = `${ArtHead}
+    } else if (tag === "#Sketches" || tag === "#Portraits") {
+      caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -155,10 +142,8 @@ Follow us @cg.nation_
              #artstation #artstationHQ #digitalpainting
              #artdaily
              `;
-        }
-
-        else if (tag === "#Vehicles") {
-             caption = `${ArtHead}
+    } else if (tag === "#Vehicles") {
+      caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -172,10 +157,8 @@ Follow us @cg.nation_
              #artstation #artstationHQ #digitalpainting
              #artdaily
              `;
-        }
-        
-        else if (tag === "#Hard Surface") {
-             caption = `${ArtHead}
+    } else if (tag === "#Hard Surface") {
+      caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -189,10 +172,8 @@ Follow us @cg.nation_
              #artstation #artstationHQ #digitalpainting
              #artdaily
              `;
-        }
-        
-        else if (tag === "#Science Fiction") {
-             caption = `${ArtHead}
+    } else if (tag === "#Science Fiction") {
+      caption = `${ArtHead}
              Great character by ${Artist}
              Follow us @cg.nation_
              .
@@ -206,9 +187,8 @@ Follow us @cg.nation_
              #artstation #artstationHQ #digitalpainting
              #artdaily
              `;
-        }
-
-    });
+    }
+  });
 }
 
 captionSelector(tags);

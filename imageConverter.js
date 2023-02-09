@@ -71,6 +71,6 @@ function imageclear() {
   }
 }
 
-export {imageConverter, imageclear, numberedJson}
-//imageConverter()
+imageConverter()
 //imageclear()
+export {imageConverter, imageclear, numberedJson}

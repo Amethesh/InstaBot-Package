@@ -3,6 +3,7 @@ import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 import cookies from "./cookies.json" assert { type: "json" };
 import { postSelector } from './caption.js';
 import imageLocator from './imageLocator.js';
+import imageSize from './ImageSize.js';
 import fs from "fs";
 import * as dotenv from 'dotenv';
 dotenv.config()
@@ -42,7 +43,7 @@ const instaBot = async (postno) => {
     // });
     //const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
-
+    console.log("Loaded cookies👍")
     await page.reload({ waitUntil: 'networkidle2'})
     
     //clicks needed to get to home page
@@ -83,10 +84,24 @@ const instaBot = async (postno) => {
        
     await page.waitForSelector('[aria-label="Select crop"]')
     await page.click('[aria-label="Select crop"]')
+    console.log("Waited and clicked crop")
     //Clicking the Dropdown and setting it to original
+    //Calling imageSize to select size
+    let imgSet
+    imageSize(postno)
+        .then((size) => {
+        imgSet = size
+        console.log(`Set size is ${size}`);
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+
+    console.log(imgSet)
     await page.waitForSelector('div._ac36._ac38 button._acan._acao._acas._aj1-')
-    await page.click('div._ac36._ac38 button._acan._acao._acas._aj1-:nth-child(1)')
-    console.log("Orignal size is set")
+    await page.click(`div._ac36._ac38 button._acan._acao._acas._aj1-:nth-child(${imgSet})`)
+    console.log("Image Size selected")
+    //console.log("Orignal size is set")
 
     //Clicking Next
     await page.waitForSelector('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
@@ -97,7 +112,9 @@ const instaBot = async (postno) => {
 
     const caption = postSelector(postno)
     console.log(caption)
-    // WTF is this?? await page.waitForSelector('.xw2csxc.x1odjw0f.x1n2onr6.x1hnll1o.xpqswwc.x5dp1im.xl565be.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x1w2wdq1.xen30ot.x1swvt13.x1pi30zi.xh8yej3.x5n08af.notranslate[role=textbox]')
+    //! WTF is this?? 
+    //?await page.waitForSelector('.xw2csxc.x1odjw0f.x1n2onr6.x1hnll1o.xpqswwc.x5dp1im.xl565be.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x1w2wdq1.xen30ot.x1swvt13.x1pi30zi.xh8yej3.x5n08af.notranslate[role=textbox]')
+    
     await page.waitForSelector('[aria-label="Write a caption..."]')
     console.log('Found and waited for caption dom')
     //await page.screenshot({ path: 'caption_prob' })
@@ -111,5 +128,5 @@ const instaBot = async (postno) => {
     console.log("posted 👍")
 }
 
-instaBot(5)
+instaBot(1)
 //imageConverter(1) //calling function to store the paths of images

@@ -1,6 +1,6 @@
 import download from "image-downloader"; //npm package for converting images urls to disk saved images
 
-import images from "./ArtData.json" assert { type: "json" };
+import images from "../json/ArtData.json" assert { type: "json" };
 //importing json gives warning since its a new feature in js
 import fs from 'fs';
 //console.log(images.imageLinks);
@@ -52,7 +52,7 @@ function imageConverter() {
 
 function imageclear() {
   for (let i = 1; i <= jsonlength; i++) {
-    for (let j = 0; j <= Object.values(numberedJson)[i-1].length; j++) {
+    for (let j = 0; j <= 4/*Object.values(numberedJson)[i-1].length*/; j++) {
       
       fs.stat(`E:/Website Design/InstagramBOT/New-InstaBOT/images/post${i}/image${j}.jpg` , function (err, stats) {
         //console.log(stats); 
@@ -71,6 +71,6 @@ function imageclear() {
   }
 }
 
-imageConverter()
+//imageConverter()
 //imageclear()
 export {imageConverter, imageclear, numberedJson}

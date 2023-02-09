@@ -1,10 +1,10 @@
 // TODO To import tags from artstaion and process it through .toLowerCase
 // TODO test it in instagram to see wheather the tab spaces is considered or not
 //! Use template literal `` to create a multiline stings
-import ArtData from "./ArtData.json" assert { type: "json" };
+import ArtData from "../json/ArtData.json" assert { type: "json" };
 
 let caption = "";
-export function postSelector(postno) {
+export function captionSelect(postno) {
   let tags;
   const ArtHead = ArtData[postno].title; // Post title
   const Artist = ArtData[postno].artistName; // Artist name

@@ -44,10 +44,10 @@ export default function imageSize(postno) {
   //console.log("set")
 }
 
-imageSize(1)
-  .then((size) => {
-    console.log(`Set size is ${size}`);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+// imageSize(1)
+//   .then((size) => {
+//     console.log(`Set size is ${size}`);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });

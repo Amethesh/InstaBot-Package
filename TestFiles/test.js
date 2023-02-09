@@ -58,7 +58,7 @@
           
 // console.log(images)
 //! start of index.js
-import getData from "./ArtstationModule.js";
+import getData from "../ArtstationScraper/ArtstationModule.js";
 import { imageConverter,imageclear } from "./imageConverter.js";
 import fs from 'fs';
 

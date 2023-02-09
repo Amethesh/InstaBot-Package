@@ -1,9 +1,9 @@
 import puppeteer from 'puppeteer-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
-import cookies from "./cookies.json" assert { type: "json" };
-import { postSelector } from './caption.js';
-import imageLocator from './imageLocator.js';
-import imageSize from './ImageSize.js';
+//import cookies from "./cookies.json" assert { type: "json" };
+import { captionSelect } from '../ImageProcessor/caption.js';
+import imageLocator from '../ImageProcessor/imageLocator.js';
+import imageSize from '../ImageProcessor/imageSize.js';
 import fs from "fs";
 import * as dotenv from 'dotenv';
 dotenv.config()
@@ -21,43 +21,41 @@ const instaBot = async (postno) => {
     await page.goto('https://www.instagram.com/')
 
     await page.waitForTimeout(1000)
-    //await page.waitForSelector('input[name=username]');
+    console.log("Opening")
+    let file = fs.readFileSync('json/cookies.json', 'utf8');
+    let cookies
+    if(!file){
+        //Login to the instagram
+        await page.waitForSelector('input[name=username]');
+        
+        await page.type('input[name=username]', process.env.INSTA_USERNAME)
+        await page.type('input[name=password]', process.env.INSTA_PASSWORD)
     
-    // await page.type('input[name=username]', process.env.INSTA_USERNAME)
-    // await page.type('input[name=password]', process.env.INSTA_PASSWORD)
+        await page.click('button[type=submit]')      
+        
+        //Saving cookies
+        cookies = await page.cookies();
+        //console.log(cookies)
+        fs.writeFileSync("json/cookies.json", JSON.stringify(cookies), (err) => {
+            if(err)
+            console.log('Unable to write');
+            else
+            console.log("Cookies written successfully")
+        });        
+        //clicks needed to get to home page
+        await page.waitForSelector('._ac8f button[type=button]');
+        await page.click('._ac8f button[type=button]')
+    }
+    else{      
+        cookies = JSON.parse(file);
+        //Load cookies
+        //const cookies = JSON.parse(cookiesString);
+        await page.setCookie(...cookies);
+        console.log("Loaded cookies👍")
+        await page.reload({ waitUntil: 'networkidle2'})
+    }
 
-    // await page.click('button[type=submit]')
-
-    //Load cookies
-    // let cookies
-    // fs.readFile("cookies.json", (err, data) => {
-    //     if(err) throw err;
-
-    //     cookies = JSON.parse(data);
-    // });
-    // let cookies
-    // fs.readFile("cookies.json", (err, data) => {
-    //     if(err) throw err;
-
-    //     cookies = JSON.parse(data);
-    // });
-    //const cookies = JSON.parse(cookiesString);
-    await page.setCookie(...cookies);
-    console.log("Loaded cookies👍")
-    await page.reload({ waitUntil: 'networkidle2'})
-    
-    //clicks needed to get to home page
-   // await page.waitForSelector('._ac8f button[type=button]');
-    //await page.click('._ac8f button[type=button]')
-
-    //Saving cookies
-    // const cookies = await page.cookies();
-    // //console.log(cookies)
-    // fs.writeFile("cookies.json", JSON.stringify(cookies), (err) => {
-    //     if(err)
-    //     console.log('Unable to write');
-    // });
-
+    //Clicking create button
     await page.waitForSelector('._a9-z ._a9--._a9_1')
     await page.click('._a9-z ._a9--._a9_1')
 
@@ -110,7 +108,7 @@ const instaBot = async (postno) => {
     await page.waitForTimeout(1000)
     await page.click('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
 
-    const caption = postSelector(postno)
+    const caption = captionSelect(postno)
     console.log(caption)
     //! WTF is this?? 
     //?await page.waitForSelector('.xw2csxc.x1odjw0f.x1n2onr6.x1hnll1o.xpqswwc.x5dp1im.xl565be.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x1w2wdq1.xen30ot.x1swvt13.x1pi30zi.xh8yej3.x5n08af.notranslate[role=textbox]')
@@ -119,7 +117,7 @@ const instaBot = async (postno) => {
     console.log('Found and waited for caption dom')
     //await page.screenshot({ path: 'caption_prob' })
     await page.type('[aria-label="Write a caption..."]', `${caption}`)
-    await page.screenshot({ path: `caption.png`, fullPage: true })
+    //?await page.screenshot({ path: `caption.png`, fullPage: true })
     
     await page.waitForTimeout(1000)
     await page.click('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._ab9-._abaa._abcm')
@@ -128,5 +126,5 @@ const instaBot = async (postno) => {
     console.log("posted 👍")
 }
 
-instaBot(1)
+instaBot(2)
 //imageConverter(1) //calling function to store the paths of images

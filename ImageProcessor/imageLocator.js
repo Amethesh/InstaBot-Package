@@ -12,4 +12,4 @@ export default function imageLocator(postno) {
   
 }
 
-imageLocator(3)
+//imageLocator(3)

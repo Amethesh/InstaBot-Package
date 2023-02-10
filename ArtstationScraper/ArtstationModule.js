@@ -15,7 +15,7 @@ puppeteer.use(stealthPlugin())
     });
     const page = await browser.newPage();
 
-    await page.goto('https://www.artstation.com/?sort_by=trending&dimension=all'); // Change the link according to the content u need
+    await page.goto('https://www.artstation.com/channels/cover_art?sort_by=trending&dimension=all'); // Change the link according to the content u need
         
     const artistData = {};
     //! Start of loop

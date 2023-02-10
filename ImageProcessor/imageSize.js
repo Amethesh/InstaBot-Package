@@ -30,7 +30,7 @@ export default function imageSize(postno) {
         resolve(3);
       } else if (ratio > 1 && ratio < 1.77) {
         console.log("Slightly Square");
-        resolve(3);
+        resolve(1);
       } else if (ratio >= 1.77) {
         console.log("Landscape");
         resolve(7);

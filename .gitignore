@@ -3,6 +3,7 @@ chrome
 images
 screenshot
 .env
+json/cookies.json
 
 #JPEG
 *.jpg

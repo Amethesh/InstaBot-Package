@@ -22,7 +22,7 @@ const instaBot = async (postno) => {
 
     await page.waitForTimeout(1000)
     console.log("Opening")
-    let file = fs.readFileSync('json/cookies.json', 'utf8');
+    let file = fs.readFileSync("json/cookies.json", 'utf8');
     let cookies
     if(!file){
         //Login to the instagram
@@ -51,6 +51,7 @@ const instaBot = async (postno) => {
         //Load cookies
         //const cookies = JSON.parse(cookiesString);
         await page.setCookie(...cookies);
+        console.log(cookies)
         console.log("Loaded cookies👍")
         await page.reload({ waitUntil: 'networkidle2'})
     }
@@ -126,5 +127,5 @@ const instaBot = async (postno) => {
     console.log("posted 👍")
 }
 
-instaBot(2)
-//imageConverter(1) //calling function to store the paths of images
+//instaBot(2)
+export default instaBot

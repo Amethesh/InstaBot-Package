@@ -71,10 +71,10 @@ getData(5)
       console.log('Unable to write');
     })
     
-  })
+})
   .catch(error => {
     console.error(error);
-  });
+});
 
 
 //!Insta Bot test
